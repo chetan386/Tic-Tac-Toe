@@ -1,34 +1,15 @@
-import React,{useState} from 'react'
+import React from 'react'
 import Square from './Square'
 
-const Board = () => {
+const Board = ({board,handleSquareClick}) => {
    
    // First element is state and second element is update function.
-   const [board,setBoard] = useState( Array(9).fill(null));
    // Now i want to update the state the state when i click on square now when events comes in.
    // Go to Square.jsx to and event onClick and add callback function
    // we need another state to keep track of another player
-    const [isNext,setIsNext] = useState(false);
    //     return isNext? 'X': 'O' after this we should also update state other wise another player turn always remain false
 
-   const handleSquareClick = (position) => {
-      
-      if( board[position] ){
-         return;
-      }
-
-      setBoard( (prev) => {
-
-         return prev.map((square,pos) =>{
-            if(pos ===position ){
-               return isNext? 'X': 'O'
-            }
-
-            return square;
-         })
-      } )
-      setIsNext( (prev)=>!prev)
-   }
+   
   
    const renderSquare = (position) => {
         return(
@@ -38,8 +19,6 @@ const Board = () => {
          />
         )
    }
-
-
 
 
 
